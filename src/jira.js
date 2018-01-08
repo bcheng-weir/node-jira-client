@@ -656,6 +656,22 @@ export default class JiraApi {
     }));
   }
 
+  /** Add issues to Jira
+   * [Jira Doc](https://developer.atlassian.com/cloud/jira/platform/rest/#api-api-2-issue-bulk-post)
+   * @name addNewIssues
+   * @function
+   * @param {object} issueUpdates - Properly Formatted Issue object
+   */
+  addNewIssues(issueUpdates) {
+    return this.doRequest(this.makeRequestHeader(this.makeUri({
+      pathname: '/issue/bulk',
+    }), {
+      method: 'POST',
+      followAllRedirects: true,
+      body: issueUpdates,
+    }));
+  }
+
   /** Add a user as a watcher on an issue
    * @name addWatcher
    * @function
