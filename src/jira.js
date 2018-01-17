@@ -1097,10 +1097,11 @@ export default class JiraApi {
    */
   getBacklogForRapidView(rapidViewId) {
     return this.doRequest(this.makeRequestHeader(this.makeUri({
-      pathname: '/xboard/plan/backlog/data',
+      pathname: `/board/${rapidViewId}/issue`,
       query: {
         rapidViewId,
       },
+      intermediatePath:'/rest/agile/1.0'
     })));
   }
 
