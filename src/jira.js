@@ -1096,10 +1096,14 @@ export default class JiraApi {
    * @param {string} rapidViewId - rapid view id
    */
   getBacklogForRapidView(rapidViewId) {
+    var startAt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var maxResults = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 50;
     return this.doRequest(this.makeRequestHeader(this.makeUri({
       pathname: `/board/${rapidViewId}/issue`,
       query: {
         rapidViewId,
+        startAt:startAt,
+        maxResults:maxResults
       },
       intermediatePath:'/rest/agile/1.0'
     })));
